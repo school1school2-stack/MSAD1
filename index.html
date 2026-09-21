@@ -256,7 +256,7 @@
 </div>
 
 <script>
-    // إعدادات Firebase الخاصة بمشروع الأستاذ مساعد (msad-e258c)
+    // إعدادات Firebase الخاصة بمشروع الأستاذ مساعد
     const firebaseConfig = {
         apiKey: "AIzaSyDGftCpTmowkhQlNAgH_o7dIMtD-RKSNaM",
         authDomain: "msad-e258c.firebaseapp.com",
@@ -384,9 +384,10 @@
 
                 rows += `<tr>
                     <td><strong>${d.name}</strong></td>
-                    <td style="color:var(--accent); font-weight:bold">${d.score}/${d.total}</td>${['est','ikm','swh','arb','sah','math'].map(k => {
+                    <td style="color:var(--accent); font-weight:bold">${d.score}/${d.total}</td>
+                    ${['est','ikm','swh','arb','sah','math'].map(k => {
                         let val = s[k] !== undefined ? s[k] : p;
-                        return `<td>${val}%<div class="prog-circle"><div class="prog-fill" style="width:${val}%; background:${val<60?'#ef4444':val<80?'#f59e0b':'#10b981'}"></div></div></td>`;
+                        return `<td>${val}%<div class="prog-circle"><div class="prog-fill" style="width:${val}\%; background:${val<60?'#ef4444':val<80?'#f59e0b':'#10b981'}"></div></div></td>`;
                     }).join('')}
                     <td>${actualModel}</td>
                     <td class="no-print">
@@ -479,7 +480,7 @@
                     <td style="padding:10px; border-bottom:1px solid #eee; text-align:right;"><b>${mName}</b></td>
                     <td style="padding:10px; border-bottom:1px solid #eee; text-align:center; color:#64748b; font-size:0.8rem;">${formattedTime}</td>
                     <td style="padding:10px; border-bottom:1px solid #eee; text-align:center; color:var(--accent); font-weight:bold;">${rec.score} من ${rec.total}</td>
-                    <td style="padding:10px; border-bottom:1px solid #eee; text-align:center;"><span style="font-weight:bold; color:${grade.color}; padding:3px 8px; background:${grade.bg}; border-radius:12px;">${pct}\% (${grade.text})</span></td>
+                    <td style="padding:10px; border-bottom:1px solid #eee; text-align:center;"><span style="font-weight:bold; color:${grade.color}; padding:3px 8px; background:${grade.bg}; border-radius:12px;">${pct}% (${grade.text})</span></td>
                 </tr>
             `;
         });
@@ -601,8 +602,8 @@
                 const card = document.createElement('div');
                 card.className = `answer-card ${isCorrect ? 'ans-correct' : 'ans-wrong'}`;
                 card.innerHTML = `
-                    <strong>س ${index + 1}:${ans.qText}</strong><br>
-                    <span>إجابة الطالب: ${ans.studentAns}${isCorrect ? '✅' : '❌'}</span><br>
+                    <strong>س ${index + 1}: ${ans.qText}</strong><br>
+                    <span>إجابة الطالب: ${ans.studentAns} ${isCorrect ? '✅' : '❌'}</span><br>
                     ${!isCorrect ? `<span>الإجابة الصحيحة: ${ans.correctAns}</span>` : ''}
                 `;
                 listContainer.appendChild(card);
